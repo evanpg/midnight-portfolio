@@ -1,0 +1,26 @@
+
+
+{
+  "name": "@midnight-ntwrk/counter-contract",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf dist managed",
+    "compile:compact": "compact compile src/counter.compact src/managed/counter",
+    "compile:typescript": "tsc",
+    "build": "tsc && npm run compile:compact && cp -Rf ./src/managed ./dist/managed && cp ./src/counter.compact ./dist"
+  }
+}
